@@ -1,0 +1,528 @@
+<html>
+  <head>
+  <script src="js/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/easyui.css" />
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="js/jquery.esayui.js"></script>
+    <style type="text/css">
+      .easyui-tabs .line {
+          height: 25px;
+          line-height: 25px;
+          margin: 3px;
+      }
+
+      .easyui-tabs .imp {
+          padding-left: 25px;
+      }
+
+      .col {
+          width: 95px;
+      }
+
+      .easyui-tabs ul {
+          list-style: none;
+          padding-left: 10px;
+      }
+
+      .easyui-tabs li {
+          height: 20px;
+      }
+
+      table td {
+          padding-top: 10px;
+          padding-left: 5px;
+      }
+
+      .nav-tabs {
+          background-color: #F2F2F2;
+      }
+
+      .tab-pane {
+          padding: 10px;
+          font-size: 16px;
+      }
+      .tab-pane label{
+          cursor: pointer;
+      }
+      .input-group{
+        margin-bottom: 5px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div style="width:100%;border: 1px rgb(202, 196, 196) solid; border-radius: 5px;padding:20px;">
+      <ul class="nav nav-tabs nav-pills" role="tablist">
+        <li role="p_second" class="active"><a href="#p_second" aria-controls="p_second" role="tab" data-toggle="tab">秒</a></li>
+        <li role="p_min"><a href="#p_min" aria-controls="p_min" role="tab" data-toggle="tab">分钟</a></li>
+        <li role="p_hour"><a href="#p_hour" aria-controls="p_hour" role="tab" data-toggle="tab">小时</a></li>
+        <li role="p_day"><a href="#p_day" aria-controls="p_day" role="tab" data-toggle="tab">日</a></li>
+        <li role="p_month"><a href="#p_month" aria-controls="p_month" role="tab" data-toggle="tab">月份</a></li>
+        <li role="p_week"><a href="#p_week" aria-controls="p_week" role="tab" data-toggle="tab">周（星期）</a></li>
+        <li role="p_year"><a href="#p_year" aria-controls="p_year" role="tab" data-toggle="tab">年份</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="p_second">
+          <div class="form-group">
+            <input type="radio" checked="checked" id="second" name="second" onclick="everyTime(this)">
+            <label for="second">每秒</label> 允许的通配符[, - * /]
+          </div>
+          <div class="form-group">
+            <input type="radio" id="s_cycle" name="second" onclick="cycle(this)">
+            <label for="s_cycle">周期</label> 从
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:58" value="1" id="secondStart_0">-
+            <input class="numberspinner" style="width: 60px;" data-options="min:2,max:59" value="2" id="secondEnd_0">秒
+          </div>
+          <div class="form-group">
+            <input type="radio" name="second" onclick="startOn(this)">从
+            <input class="numberspinner" style="width: 60px;" data-options="min:0,max:59" value="0" id="secondStart_1">秒开始,每
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:59" value="1" id="secondEnd_1">秒执行一次
+          </div>
+          <div class="form-group">
+            <input type="radio" name="second" id="sencond_appoint">
+            <label for ="sencond_appoint">指定</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox" id="s_0" value="0"><label for="s_0">00</label>
+            <input type="checkbox" id="s_1" value="1"><label for="s_1">01</label>
+            <input type="checkbox" id="s_2" value="2"><label for="s_2">02</label>
+            <input type="checkbox" id="s_3" value="3"><label for="s_3">03</label>
+            <input type="checkbox" id="s_4" value="4"><label for="s_4">04</label>
+            <input type="checkbox" id="s_5" value="5"><label for="s_5">05</label>
+            <input type="checkbox" id="s_6" value="6"><label for="s_6">06</label>
+            <input type="checkbox" id="s_7" value="7"><label for="s_7">07</label>
+            <input type="checkbox" id="s_8" value="8"><label for="s_8">08</label>
+            <input type="checkbox" id="s_9" value="9"><label for="s_9">09</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox"  id="s_10" value="10"><label for="s_10">10</label>
+            <input type="checkbox"  id="s_11" value="11"><label for="s_11">11</label>
+            <input type="checkbox"  id="s_12" value="12"><label for="s_12">12</label>
+            <input type="checkbox"  id="s_13" value="13"><label for="s_13">13</label>
+            <input type="checkbox"  id="s_14" value="14"><label for="s_14">14</label>
+            <input type="checkbox"  id="s_15" value="15"><label for="s_15">15</label>
+            <input type="checkbox"  id="s_16" value="16"><label for="s_16">16</label>
+            <input type="checkbox"  id="s_17" value="17"><label for="s_17">17</label>
+            <input type="checkbox"  id="s_18" value="18"><label for="s_18">18</label>
+            <input type="checkbox"  id="s_19" value="19"><label for="s_19">19</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox"  id="s_20" value="20"><label for="s_20">20</label>
+            <input type="checkbox"  id="s_21" value="21"><label for="s_21">21</label>
+            <input type="checkbox"  id="s_22" value="22"><label for="s_22">22</label>
+            <input type="checkbox"  id="s_23" value="23"><label for="s_23">23</label>
+            <input type="checkbox"  id="s_24" value="24"><label for="s_24">24</label>
+            <input type="checkbox"  id="s_25" value="25"><label for="s_25">25</label>
+            <input type="checkbox"  id="s_26" value="26"><label for="s_26">26</label>
+            <input type="checkbox"  id="s_27" value="27"><label for="s_27">27</label>
+            <input type="checkbox"  id="s_28" value="28"><label for="s_28">28</label>
+            <input type="checkbox"  id="s_29" value="29"><label for="s_29">29</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox"  id="s_30" value="30"><label for="s_30">30</label>
+            <input type="checkbox"  id="s_31" value="31"><label for="s_31">31</label>
+            <input type="checkbox"  id="s_32" value="32"><label for="s_32">32</label>
+            <input type="checkbox"  id="s_33" value="33"><label for="s_33">33</label>
+            <input type="checkbox"  id="s_34" value="34"><label for="s_34">34</label>
+            <input type="checkbox"  id="s_35" value="35"><label for="s_35">35</label>
+            <input type="checkbox"  id="s_36" value="36"><label for="s_36">36</label>
+            <input type="checkbox"  id="s_37" value="37"><label for="s_37">37</label>
+            <input type="checkbox"  id="s_38" value="38"><label for="s_38">38</label>
+            <input type="checkbox"  id="s_39" value="39"><label for="s_39">39</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox"  id="s_40" value="40"><label for="s_40">40</label>
+            <input type="checkbox"  id="s_41" value="41"><label for="s_41">41</label>
+            <input type="checkbox"  id="s_42" value="42"><label for="s_42">42</label>
+            <input type="checkbox"  id="s_43" value="43"><label for="s_43">43</label>
+            <input type="checkbox"  id="s_44" value="44"><label for="s_44">44</label>
+            <input type="checkbox"  id="s_45" value="45"><label for="s_45">45</label>
+            <input type="checkbox"  id="s_46" value="46"><label for="s_46">46</label>
+            <input type="checkbox"  id="s_47" value="47"><label for="s_47">47</label>
+            <input type="checkbox"  id="s_48" value="48"><label for="s_48">48</label>
+            <input type="checkbox"  id="s_49" value="49"><label for="s_49">49</label>
+          </div>
+          <div class="imp secondList">
+            <input type="checkbox"  id="s_50" value="50"><label for="s_50">50</label>
+            <input type="checkbox"  id="s_51" value="51"><label for="s_51">51</label>
+            <input type="checkbox"  id="s_52" value="52"><label for="s_52">52</label>
+            <input type="checkbox"  id="s_53" value="53"><label for="s_53">53</label>
+            <input type="checkbox"  id="s_54" value="54"><label for="s_54">54</label>
+            <input type="checkbox"  id="s_55" value="55"><label for="s_55">55</label>
+            <input type="checkbox"  id="s_56" value="56"><label for="s_56">56</label>
+            <input type="checkbox"  id="s_57" value="57"><label for="s_57">57</label>
+            <input type="checkbox"  id="s_58" value="58"><label for="s_58">58</label>
+            <input type="checkbox"  id="s_59" value="59"><label for="s_59">59</label>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="p_min">
+            <div class="form-group">
+              <input type="radio" checked="checked" id="min" name="min" onclick="everyTime(this)">
+              <label for="min">分钟</label> 允许的通配符[, - * /]
+            </div>
+            <div class="form-group">
+              <input type="radio" name="min" id="m_cycle" onclick="cycle(this)">
+              <label for="m_cycle">周期</label> 从
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:58" value="1" id="minStart_0">-
+              <input class="numberspinner" style="width: 60px;" data-options="min:2,max:59" value="2" id="minEnd_0">分钟
+            </div>
+            <div class="form-group">
+              <input type="radio" name="min" onclick="startOn(this)">从
+              <input class="numberspinner" style="width: 60px;" data-options="min:0,max:59" value="0" id="minStart_1">分钟开始,每
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:59" value="1" id="minEnd_1">分钟执行一次
+            </div>
+            <div class="form-group">
+              <input type="radio" name="min" id="min_appoint">
+              <label for="min_appoint">指定</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_0" value="0"><label for="m_0">00</label>
+              <input type="checkbox"  id="m_1" value="1"><label for="m_1">01</label>
+              <input type="checkbox"  id="m_2" value="2"><label for="m_2">02</label>
+              <input type="checkbox"  id="m_3" value="3"><label for="m_3">03</label>
+              <input type="checkbox"  id="m_4" value="4"><label for="m_4">04</label>
+              <input type="checkbox"  id="m_5" value="5"><label for="m_5">05</label>
+              <input type="checkbox"  id="m_6" value="6"><label for="m_6">06</label>
+              <input type="checkbox"  id="m_7" value="7"><label for="m_7">07</label>
+              <input type="checkbox"  id="m_8" value="8"><label for="m_8">08</label>
+              <input type="checkbox"  id="m_9" value="9"><label for="m_9">09</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_10" value="10"><label for="m_10">10</label>
+              <input type="checkbox"  id="m_11" value="11"><label for="m_11">11</label>
+              <input type="checkbox"  id="m_12" value="12"><label for="m_12">12</label>
+              <input type="checkbox"  id="m_13" value="13"><label for="m_13">13</label>
+              <input type="checkbox"  id="m_14" value="14"><label for="m_14">14</label>
+              <input type="checkbox"  id="m_15" value="15"><label for="m_15">15</label>
+              <input type="checkbox"  id="m_16" value="16"><label for="m_16">16</label>
+              <input type="checkbox"  id="m_17" value="17"><label for="m_17">17</label>
+              <input type="checkbox"  id="m_18" value="18"><label for="m_18">18</label>
+              <input type="checkbox"  id="m_19" value="19"><label for="m_19">19</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_20" value="20"><label for="m_20">20</label>
+              <input type="checkbox"  id="m_21" value="21"><label for="m_21">21</label>
+              <input type="checkbox"  id="m_22" value="22"><label for="m_22">22</label>
+              <input type="checkbox"  id="m_23" value="23"><label for="m_23">23</label>
+              <input type="checkbox"  id="m_24" value="24"><label for="m_24">24</label>
+              <input type="checkbox"  id="m_25" value="25"><label for="m_25">25</label>
+              <input type="checkbox"  id="m_26" value="26"><label for="m_26">26</label>
+              <input type="checkbox"  id="m_27" value="27"><label for="m_27">27</label>
+              <input type="checkbox"  id="m_28" value="28"><label for="m_28">28</label>
+              <input type="checkbox"  id="m_29" value="29"><label for="m_29">29</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_30" value="30"><label for="m_30">30</label>
+              <input type="checkbox"  id="m_31" value="31"><label for="m_31">31</label>
+              <input type="checkbox"  id="m_32" value="32"><label for="m_32">32</label>
+              <input type="checkbox"  id="m_33" value="33"><label for="m_33">33</label>
+              <input type="checkbox"  id="m_34" value="34"><label for="m_34">34</label>
+              <input type="checkbox"  id="m_35" value="35"><label for="m_35">35</label>
+              <input type="checkbox"  id="m_36" value="36"><label for="m_36">36</label>
+              <input type="checkbox"  id="m_37" value="37"><label for="m_37">37</label>
+              <input type="checkbox"  id="m_38" value="38"><label for="m_38">38</label>
+              <input type="checkbox"  id="m_39" value="39"><label for="m_39">39</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_40" value="40"><label for="m_40">40</label>
+              <input type="checkbox"  id="m_41" value="41"><label for="m_41">41</label>
+              <input type="checkbox"  id="m_42" value="42"><label for="m_42">42</label>
+              <input type="checkbox"  id="m_43" value="43"><label for="m_43">43</label>
+              <input type="checkbox"  id="m_44" value="44"><label for="m_44">44</label>
+              <input type="checkbox"  id="m_45" value="45"><label for="m_45">45</label>
+              <input type="checkbox"  id="m_46" value="46"><label for="m_46">46</label>
+              <input type="checkbox"  id="m_47" value="47"><label for="m_47">47</label>
+              <input type="checkbox"  id="m_48" value="48"><label for="m_48">48</label>
+              <input type="checkbox"  id="m_49" value="49"><label for="m_49">49</label>
+            </div>
+            <div class="imp minList">
+              <input type="checkbox"  id="m_50" value="50"><label for="m_50">50</label>
+              <input type="checkbox"  id="m_51" value="51"><label for="m_51">51</label>
+              <input type="checkbox"  id="m_52" value="52"><label for="m_52">52</label>
+              <input type="checkbox"  id="m_53" value="53"><label for="m_53">53</label>
+              <input type="checkbox"  id="m_54" value="54"><label for="m_54">54</label>
+              <input type="checkbox"  id="m_55" value="55"><label for="m_55">55</label>
+              <input type="checkbox"  id="m_56" value="56"><label for="m_56">56</label>
+              <input type="checkbox"  id="m_57" value="57"><label for="m_57">57</label>
+              <input type="checkbox"  id="m_58" value="58"><label for="m_58">58</label>
+              <input type="checkbox"  id="m_59" value="59"><label for="m_59">59</label>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="p_hour">
+            <div class="form-group">
+              <input type="radio" checked="checked" name="hour" id="hour" onclick="everyTime(this)">
+              <label for ="hour">小时</label> 允许的通配符[, - * /]
+            </div>
+            <div class="form-group">
+              <input type="radio" name="hour" id="h_cycle" onclick="cycle(this)">
+              <label for ="h_cycle">周期</label> 从
+              <input class="numberspinner" style="width: 60px;" data-options="min:0,max:23" value="0" id="hourStart_0">-
+              <input class="numberspinner" style="width: 60px;" data-options="min:2,max:23" value="2" id="hourEnd_1">小时
+            </div>
+            <div class="form-group">
+              <input type="radio" name="hour" onclick="startOn(this)">从
+              <input class="numberspinner" style="width: 60px;" data-options="min:0,max:23" value="0" id="hourStart_1">小时开始,每
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:23" value="1" id="Text1">小时执行一次
+            </div>
+            <div class="form-group">
+              <input type="radio" name="hour" id="hour_appoint">
+              <label for="hour_appoint">指定</label>
+            </div>
+            <div class="imp hourList">
+              上午:
+              <input type="checkbox"  id="h_0" value="0"><label for="h_0">00</label>
+              <input type="checkbox"  id="h_1" value="1"><label for="h_1">01</label>
+              <input type="checkbox"  id="h_2" value="2"><label for="h_2">02</label>
+              <input type="checkbox"  id="h_3" value="3"><label for="h_3">03</label>
+              <input type="checkbox"  id="h_4" value="4"><label for="h_4">04</label>
+              <input type="checkbox"  id="h_5" value="5"><label for="h_5">05</label>
+              <input type="checkbox"  id="h_6" value="6"><label for="h_6">06</label>
+              <input type="checkbox"  id="h_7" value="7"><label for="h_7">07</label>
+              <input type="checkbox"  id="h_8" value="8"><label for="h_8">08</label>
+              <input type="checkbox"  id="h_9" value="9"><label for="h_9">09</label>
+              <input type="checkbox"  id="h_10" value="10"><label for="h_10">10</label>
+              <input type="checkbox"  id="h_11" value="11"><label for="h_11">11</label>
+            </div>
+            <div class="imp hourList">
+              下午:
+              <input type="checkbox"  id="h_12" value="12"><label for="h_12">12</label>
+              <input type="checkbox"  id="h_13" value="13"><label for="h_13">13</label>
+              <input type="checkbox"  id="h_14" value="14"><label for="h_14">14</label>
+              <input type="checkbox"  id="h_15" value="15"><label for="h_15">15</label>
+              <input type="checkbox"  id="h_16" value="16"><label for="h_16">16</label>
+              <input type="checkbox"  id="h_17" value="17"><label for="h_17">17</label>
+              <input type="checkbox"  id="h_18" value="18"><label for="h_18">18</label>
+              <input type="checkbox"  id="h_19" value="19"><label for="h_19">19</label>
+              <input type="checkbox"  id="h_20" value="20"><label for="h_20">20</label>
+              <input type="checkbox"  id="h_21" value="21"><label for="h_21">21</label>
+              <input type="checkbox"  id="h_22" value="22"><label for="h_22">22</label>
+              <input type="checkbox"  id="h_23" value="23"><label for="h_23">23</label>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="p_day">
+            <div class="form-group">
+              <input type="radio" checked="checked" id="day" name="day" onclick="everyTime(this)">
+              <label for="day">日</label> 允许的通配符[, - * / L W]
+            </div>
+            <div class="form-group">
+              <input type="radio" name="day" id="d_unAppoint" onclick="unAppoint(this)">
+              <label for="d_unAppoint">不指定</label>
+            </div>
+            <div class="form-group">
+              <input type="radio" name="day" id="d_cycle" onclick="cycle(this)">
+              <label for="d_cycle">周期</label> 从
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:31" value="1" id="dayStart_0">-
+              <input class="numberspinner" style="width: 60px;" data-options="min:2,max:31" value="2" id="dayEnd_0">日
+            </div>
+            <div class="form-group">
+              <input type="radio" name="day" onclick="startOn(this)">从
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:31" value="1" id="dayStart_1">日开始,每
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:31" value="1" id="dayEnd_1">天执行一次
+            </div>
+            <div class="form-group">
+              <input type="radio" name="day" id="d_workDay" onclick="workDay(this)">
+              <label for="d_workDay">每月</label>
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:31" value="1" id="dayStart_2">号最近的那个工作日
+            </div>
+            <div class="form-group">
+              <input type="radio" name="day" id="d_lastDay" onclick="lastDay(this)">
+              <label for="d_lastDay">本月最后一天</label>
+            </div>
+            <div class="line">
+              <input type="radio" name="day" id="day_appoint">
+              <label for="day_appoint">指定</label>
+            </div>
+            <div class="imp dayList">
+              <input type="checkbox"  id="d_1" value="1"><label for="d_1">1</label>
+              <input type="checkbox"  id="d_2" value="2"><label for="d_2">2</label>
+              <input type="checkbox"  id="d_3" value="3"><label for="d_3">3</label>
+              <input type="checkbox"  id="d_4" value="4"><label for="d_4">4</label>
+              <input type="checkbox"  id="d_5" value="5"><label for="d_5">5</label>
+              <input type="checkbox"  id="d_6" value="6"><label for="d_6">6</label>
+              <input type="checkbox"  id="d_7" value="7"><label for="d_7">7</label>
+              <input type="checkbox"  id="d_8" value="8"><label for="d_8">8</label>
+              <input type="checkbox"  id="d_9" value="9"><label for="d_9">9</label>
+              <input type="checkbox"  id="d_10" value="10"><label for="d_10">10</label>
+              <input type="checkbox"  id="d_11" value="11"><label for="d_11">11</label>
+              <input type="checkbox"  id="d_12" value="12"><label for="d_12">12</label>
+              <input type="checkbox"  id="d_13" value="13"><label for="d_13">13</label>
+              <input type="checkbox"  id="d_14" value="14"><label for="d_14">14</label>
+              <input type="checkbox"  id="d_15" value="15"><label for="d_15">15</label>
+              <input type="checkbox"  id="d_16" value="16"><label for="d_16">16</label>
+            </div>
+            <div class="imp dayList">
+              <input type="checkbox"  id="d_17" value="17"><label for="d_17">17</label>
+              <input type="checkbox"  id="d_18" value="18"><label for="d_18">18</label>
+              <input type="checkbox"  id="d_19" value="19"><label for="d_19">19</label>
+              <input type="checkbox"  id="d_20" value="20"><label for="d_20">20</label>
+              <input type="checkbox"  id="d_21" value="21"><label for="d_21">21</label>
+              <input type="checkbox"  id="d_22" value="22"><label for="d_22">22</label>
+              <input type="checkbox"  id="d_23" value="23"><label for="d_23">23</label>
+              <input type="checkbox"  id="d_24" value="24"><label for="d_24">24</label>
+              <input type="checkbox"  id="d_25" value="25"><label for="d_25">25</label>
+              <input type="checkbox"  id="d_26" value="26"><label for="d_26">26</label>
+              <input type="checkbox"  id="d_27" value="27"><label for="d_27">27</label>
+              <input type="checkbox"  id="d_28" value="28"><label for="d_28">28</label>
+              <input type="checkbox"  id="d_29" value="29"><label for="d_29">29</label>
+              <input type="checkbox"  id="d_30" value="30"><label for="d_30">30</label>
+              <input type="checkbox"  id="d_31" value="31"><label for="d_31">31</label>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="p_month">
+          <div class="form-group">
+            <input type="radio" checked="checked" name="mouth" id="mouth" onclick="everyTime(this)">
+            <label for="mouth">月</label> 允许的通配符[, - * /]
+          </div>
+
+          <div class="form-group">
+            <input type="radio" name="mouth" id="mouth_cycle" onclick="cycle(this)">
+            <label for="mouth_cycle">周期</label> 从
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:12" value="1" id="mouthStart_0">-
+            <input class="numberspinner" style="width: 60px;" data-options="min:2,max:12" value="2" id="mouthEnd_0">月
+          </div>
+            <div class="form-group">
+              <input type="radio" name="mouth" id="m_startOn" onclick="startOn(this)">从
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:12" value="1" id="mouthStart_1">日开始,每
+              <input class="numberspinner" style="width: 60px;" data-options="min:1,max:12" value="1" id="mouthEnd_1">月执行一次
+            </div>
+            <div class="form-group">
+              <input type="radio" name="mouth" id="mouth_appoint">
+              <label for="mouth_appoint">指定</label>
+            </div>
+            <div class="imp mouthList">
+              <input type="checkbox"  id="m_1" value="1"><label for="m_1">1</label>
+              <input type="checkbox"  id="m_2" value="2"><label for="m_2">2</label>
+              <input type="checkbox"  id="m_3" value="3"><label for="m_3">3</label>
+              <input type="checkbox"  id="m_4" value="4"><label for="m_4">4</label>
+              <input type="checkbox"  id="m_5" value="5"><label for="m_5">5</label>
+              <input type="checkbox"  id="m_6" value="6"><label for="m_6">6</label>
+              <input type="checkbox"  id="m_7" value="7"><label for="m_7">7</label>
+              <input type="checkbox"  id="m_8" value="8"><label for="m_8">8</label>
+              <input type="checkbox"  id="m_9" value="9"><label for="m_9">9</label>
+              <input type="checkbox"  id="m_10" value="10"><label for="m_10">10</label>
+              <input type="checkbox"  id="m_11" value="11"><label for="m_11">11</label>
+              <input type="checkbox"  id="m_12" value="12"><label for="m_12">12</label>
+            </div>
+          </div>
+        <div role="tabpanel" class="tab-pane" id="p_week">
+          <div class="form-group">
+            <input type="radio" checked="checked" name="week" id="week" onclick="everyTime(this)">
+            <label for="week">周</label> 允许的通配符[, - * / L #]
+          </div>
+          <div class="form-group">
+            <input type="radio" name="week" id="w_unAppoint" onclick="unAppoint(this)">
+            <label for="w_unAppoint">不指定</label>
+          </div>
+          <div class="form-group">
+            <input type="radio" name="week" id="w_cycle" onclick="startOn(this)">
+            <label for="w_cycle">周期</label> 从星期<input class="numberspinner" style="width: 60px;" data-options="min:1,max:7" id="weekStart_0" value="1">-
+            <input class="numberspinner" style="width: 60px;" data-options="min:2,max:7" value="2" id="weekEnd_0">
+          </div>
+          <div class="form-group">
+            <input type="radio" name="week" onclick="weekOfDay(this)">第
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:4" value="1" id="weekStart_1">周 的星期
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:7" id="weekEnd_1" value="1">
+          </div>
+          <div class="form-group">
+            <input type="radio" name="week" onclick="lastWeek(this)">本月最后一个星期
+            <input class="numberspinner" style="width: 60px;" data-options="min:1,max:7" id="weekStart_2" value="1">
+          </div>
+          <div class="form-group">
+            <input type="radio" name="week" id="week_appoint">
+            <label for="week_appoint">指定</label>
+          </div>
+          <div class="imp weekList">
+            <input type="checkbox"  id="w_1" value="1"><label for="w_1">1</label>
+            <input type="checkbox"  id="w_2" value="2"><label for="w_2">2</label>
+            <input type="checkbox"  id="w_3" value="3"><label for="w_3">3</label>
+            <input type="checkbox"  id="w_4" value="4"><label for="w_4">4</label>
+            <input type="checkbox"  id="w_5" value="5"><label for="w_5">5</label>
+            <input type="checkbox"  id="w_6" value="6"><label for="w_6">6</label>
+            <input type="checkbox"  id="w_7" value="7"><label for="w_7">7</label>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="p_year">
+          <div class="form-group">
+            <input type="radio" checked="checked" name="year" id="y_unAppoint" onclick="unAppoint(this)">
+            <label for="y_unAppoint">不指定</label> 允许的通配符[, - * /] 非必填
+          </div>
+          <div class="form-group">
+            <input type="radio" name="year" id="y_everyTime" onclick="everyTime(this)">
+            <label for="y_everyTime">每年</label>
+          </div>
+          <div class="form-group">
+            <input type="radio" name="year" id="y_cycle" onclick="cycle(this)"><label for="y_cycle">周期</label> 从
+            <input class="numberspinner" style="width: 90px;" data-options="min:2013,max:3000" id="yearStart_0" value="2019">-
+            <input class="numberspinner" style="width: 90px;" data-options="min:2014,max:3000" id="yearEnd_0" value="2020">
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" role="alert" id="errorCron" style="display: none;"></div>
+      <div data-options="region:'south',border:false">
+        <fieldset style="border-radius: 3px;">
+          <legend>表达式</legend>
+          <div class="form-group">
+            <label>表达式字段:</label>
+            <div class="row">
+              <div class="col-md-2 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_second" value="*" readonly="readonly"/>
+                  <span class="input-group-addon">秒</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" id="v_min" name="v_min" value="*" readonly="readonly"/>
+                  <span class="input-group-addon">分钟</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_hour" value="*" readonly="readonly"/>
+                  <span class="input-group-addon">小时</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_day" value="*" readonly="readonly"/>
+                  <span class="input-group-addon">日</span>
+                </div>
+              </div>
+              <div class="col-md-1 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_mouth"  value="*" readonly="readonly"/>
+                  <span class="input-group-addon">月</span>
+                </div>
+              </div>
+              <div class="col-md-1 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_week" value="?" readonly="readonly"/>
+                  <span class="input-group-addon">星期</span>
+                </div>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <div class="input-group">
+                  <input class="form-control" type="text" name="v_year" class="col" readonly="readonly"/>
+                  <span class="input-group-addon">年</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Cron 表达式:</label>
+              <input class="form-control" type="text" name="cron" value="* * * * * ?" id="cron"/>
+            </div>
+            <!-- <div class="form-group">
+              <button type="button" class="btn btn-info" onclick="btnFan()">反解析到UI</button>&nbsp;&nbsp;
+              <button type="button" class="btn btn-info" onclick="btnrun()">运行</button>
+            </div>
+            <div class="form-group">
+              <label>最近10次运行时间</label>
+              <textarea class="form-control" rows="10" id="runTime" style="width: 100%"></textarea>
+            </div> -->
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>
